@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+huggingface_hub
+tavily-python
+sentence-transformers
+scikit-learn
+langchain
+langchain-core
+langchain-groq
+langgraph
+langsmith
+pydantic

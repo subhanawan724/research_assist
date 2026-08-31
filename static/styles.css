@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+body {
+  background-image: url('bg1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  animation: slowPan 30s ease-in-out infinite alternate;
+  color: #2c4a4f;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 80px 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+@keyframes slowPan {
+  0% { background-size: 100%; background-position: 0% 0%; }
+  100% { background-size: 115%; background-position: 100% 100%; }
+}
+.container {
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: 2.3rem;
+  color: #2a7f8f;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.tagline {
+  color: #12282d; 
+  font-weight: 500;
+  font-size: 1rem;
+}
+.input-card {
+  background: rgba(18, 53, 59, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(79, 168, 172, 0.4);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+textarea {
+  width: 100%;
+  background: rgba(10, 35, 40, 0.6); 
+  border: 1.5px solid #3d8891;
+  border-radius: 12px;
+  color: #e0f2f1; 
+  padding: 16px;
+  font-size: 15px;
+  resize: vertical;
+  outline: none;
+}
+
+textarea::placeholder {
+  color: #7a9ea3;
+}
+
+textarea:focus {
+  border-color: #4fa8ac;
+  box-shadow: 0 0 0 4px rgba(79, 168, 172, 0.12);
+}
+
+button {
+  margin-top: 16px;
+  background: linear-gradient(90deg, #4fa8ac, #3d8891);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 13px 26px;
+  cursor: pointer;
+  font-size: 15px;
+  box-shadow: 0 4px 14px rgba(61, 136, 145, 0.25);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(61, 136, 145, 0.35);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.hidden {
+  display: none !important;
+}
+.status-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  color: #0b1a1c; 
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8); 
+}
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #12282d; 
+  box-shadow: 0 0 8px rgba(18, 40, 45, 0.9);
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.4; }
+}
+
+.question-box {
+  margin-top: 20px;
+  background: rgba(255, 248, 232, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid #e8c874;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.question-box input {
+  width: 100%;
+  background: white;
+  border: 1.5px solid #f0d896;
+  border-radius: 10px;
+  color: #5a4600;
+  padding: 12px;
+  margin: 12px 0;
+}
+
+.result-card {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 8px 32px rgba(42, 127, 143, 0.1);
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #e0eeed;
+  padding-bottom: 14px;
+}
+
+.result-header h2 { color: #2a7f8f; }
+
+.result-header a {
+  color: #3d8891;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+#resultText {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  line-height: 1.8;
+  color: #2c4a4f;
+}
+
+
+#resultText pre, 
+#resultText code {
+  white-space: pre-wrap !important; 
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100%;
+  overflow-x: hidden; 
+  background: rgba(10, 35, 40, 0.4);
+  padding: 15px;
+  border-radius: 8px;
+  display: block;
+}
+#resultText h1, #resultText h2, #resultText h3 {
+  color: #2a7f8f;
+  margin: 16px 0 8px;
+}
+#resultText strong { color: #1a5a66; }
+#resultText p { margin-bottom: 12px; }
+#resultText ul, #resultText ol { margin-left: 20px; margin-bottom: 12px; }
