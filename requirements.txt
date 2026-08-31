@@ -2,7 +2,6 @@ fastapi
 uvicorn
 huggingface_hub
 tavily-python
-sentence-transformers
 scikit-learn
 langchain
 langchain-core
