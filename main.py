@@ -1,5 +1,5 @@
 
-from sentence_transformers import SentenceTransformer
+
 import os
 import re
 import json
@@ -33,13 +33,15 @@ LANGSMITH_KEY = os.environ["LANGSMITH_KEY"]
 
 client = InferenceClient(provider="featherless-ai", token=HF_TOKEN)
 tavily = TavilyClient(api_key=TAVILY_KEY)
-embed_model = SentenceTransformer("all-MiniLM-L6-v2")
+
 
 langsmith_client = LangSmithClient(api_key=LANGSMITH_KEY)
 tracer = LangChainTracer(project_name="academic-research-assistant", client=langsmith_client)
 
 chat_model = ChatGroq(model="qwen/qwen3.8-27b", groq_api_key=GROQ_KEY, temperature=0)
-
+def get_embedding(text: str) -> list:
+    result = client.feature_extraction(text, model="sentence-transformers/all-MiniLM-L6-v2")
+    return result
 
 
 
@@ -90,7 +92,7 @@ def cluster_papers(state: Annotated[dict, InjectedState]) -> str:
     if len(fetched_content) < 2:
         return "Not enough papers to cluster (need at least 2)."
 
-    embeddings = embed_model.encode(fetched_content)
+    embeddings = [get_embedding(content) for content in fetched_content]
     num_clusters = min(3, len(fetched_content))
     kmeans = KMeans(n_clusters=num_clusters, random_state=42, n_init=10)
     labels = kmeans.fit_predict(embeddings)
