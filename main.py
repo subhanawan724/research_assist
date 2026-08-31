@@ -39,8 +39,9 @@ langsmith_client = LangSmithClient(api_key=LANGSMITH_KEY)
 tracer = LangChainTracer(project_name="academic-research-assistant", client=langsmith_client)
 
 chat_model = ChatGroq(model="qwen/qwen3.8-27b", groq_api_key=GROQ_KEY, temperature=0)
+embedding_client = InferenceClient(token=HF_TOKEN)   
 def get_embedding(text: str) -> list:
-    result = client.feature_extraction(text, model="sentence-transformers/all-MiniLM-L6-v2")
+    result = embedding_client.feature_extraction(text, model="sentence-transformers/all-MiniLM-L6-v2")
     return result
 
 
